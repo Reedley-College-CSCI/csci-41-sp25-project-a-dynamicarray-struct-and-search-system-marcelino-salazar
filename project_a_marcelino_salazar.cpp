@@ -29,7 +29,15 @@ struct Client {
 
 int main() {
 
-    const int NUM_CLIENTS = 25;
-    Client clients[NUM_CLIENTS];
+int capacity;
+cout << "How many clients do you want to view?";
+cin >> capacity;
+
+Client* clients = new Client [capacity];
+
+ifstream file("bank_full.csv");
+string line;
+
+getline(file, line);
 }
 
