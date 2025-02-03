@@ -5,13 +5,13 @@
 
 using namespace std; //tells compiler to make all classes, objects and functions available from std.
 
-//here I create a struct named Client with all data members representing the vaeriables given in the dataset.
+//here I create a struct named Client with all data members representing the variables given in the dataset.
 struct Client {
     int age;
     string job;
     string marital;
     string education;
-    string default;
+    string defaulted; //could not use default since it is a keyword.
     int balance;
     string housing;
     string loan; 
@@ -25,7 +25,11 @@ struct Client {
     string poutcome;
     string y;
 
+};
+
+int main() {
+
+    const int NUM_CLIENTS = 25;
+    Client clients[NUM_CLIENTS];
 }
-    
-"age";"job";"marital";"education";"default";"balance";"housing";"loan";"contact";"day";"month";"duration";"campaign";"pdays";"previous";"poutcome";"y"
-58;"management";"married";"tertiary";"no";2143;"yes";"no";"unknown";5;"may";261;1;-1;0;"unknown";"no"
+
