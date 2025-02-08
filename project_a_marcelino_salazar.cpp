@@ -43,10 +43,18 @@ int capacity;
 cout << "How many clients do you want to view?";
 cin >> capacity; //capacity will determine the amount of data to access from the external file.
 
-ClientRecord* clientFile = new ClientRecord[capacity]; //here I declare a pointer named "clientFile" and assign a dynamic array of structs.
+ClientRecord* clientFile = new ClientRecord[capacity]; //this declares a pointer named "clientFile" and assigns a dynamic array of structs.
 
-ifstream file("bank_full.csv"); //here I declare a ifstream class named "file" to open the external file bank_full.csv.
-string line; //here I declare a string class object named "line"
-getline(file, line); //here I use the string function to store rows from the external file.
+ifstream file("bank_full.csv"); //this declares a ifstream class named "file" to open the external file bank_full.csv.
+string line; //this declares a string class object named "line" to store values.
+getline(file, line); //here I use the string function to store rows from the external file into "line". It's placement here is meant to skip the header before executing the for loop.
+
+for (int i = 0; i < capacity; i++) { //this declares a for loop to read in capacity number rows from the external file.
+    stringstream parse(line); //this declares a stringstream class named "parse" which splits values from rows stored in "line" variable into individual strings.
+    string temporaryLine; //here I declare a string class object named "temporaryLine" to temporarily store values extracted.
+
 }
 
+file.close();
+
+}
