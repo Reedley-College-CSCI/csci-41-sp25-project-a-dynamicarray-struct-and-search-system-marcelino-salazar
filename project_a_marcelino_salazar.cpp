@@ -5,7 +5,7 @@
 
 using namespace std; //tells compiler to make all classes, objects and functions available from std.
 
-//here I create multiple structs to where the last struct is nested with the previous 3.
+//here I create multiple structs to where the last struct is nested with the previous 3. This is critical for menu options.
 struct ClientData {
     int age;
     string job;
@@ -38,17 +38,15 @@ struct ClientRecord { //this struct is nested with previous 3 structs.
     CampaignData campaignInfo; 
 };
 
-int main() {
-
+int main() { 
 int capacity;
 cout << "How many clients do you want to view?";
-cin >> capacity;
+cin >> capacity; //capacity will determine the amount of data to access from the external file.
 
-Client* clients = new Client [capacity];
+ClientRecord* clientFile = new ClientRecord[capacity]; //here I declare a pointer named "clientFile" and assign a dynamic array of structs.
 
-ifstream file("bank_full.csv");
-string line;
-
-getline(file, line);
+ifstream file("bank_full.csv"); //here I declare a ifstream class named "file" to open the external file bank_full.csv.
+string line; //here I declare a string class object named "line"
+getline(file, line); //here I use the string function to store rows from the external file.
 }
 
