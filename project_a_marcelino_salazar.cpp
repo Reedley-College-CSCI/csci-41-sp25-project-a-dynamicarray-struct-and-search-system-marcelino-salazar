@@ -5,17 +5,23 @@
 
 using namespace std; //tells compiler to make all classes, objects and functions available from std.
 
-//here I create a struct named Client with all data members representing the variables given in the dataset.
-struct Client {
+//here I create multiple structs to where the last struct is nested with the previous 3.
+struct ClientData {
     int age;
     string job;
     string marital;
     string education;
+};
+
+struct ClientBankData {
     string defaulted; //could not use default since it is a keyword.
     int balance;
     string housing;
     string loan; 
     string contact;
+};
+
+struct CampaignData {    
     int day;
     string month;
     int duration;
@@ -24,7 +30,12 @@ struct Client {
     int previous;
     string poutcome;
     string y;
+};
 
+struct ClientRecord { //this struct is nested with previous 3 structs.
+    ClientData clientInfo;
+    ClientBankData clientBankInfo;
+    CampaignData campaignInfo; 
 };
 
 int main() {
