@@ -5,6 +5,8 @@
 
 using namespace std; //tells compiler to make all classes, objects and functions available from std.
 
+class Clients { //here I added a class to hold structs
+    public:
 //here I create multiple structs to where the last struct is nested with the previous 3. This is critical for menu options.
 struct ClientData {
     int age;
@@ -78,6 +80,12 @@ struct ClientRecord { //this struct is nested with previous 3 structs.
     }
 };
 
+private:
+ClientRecord* clientFile; //this declares a pointer named "clientFile" and assigns a dynamic array of structs.
+int capacity
+
+public:
+
 int main() { 
 int capacity;
 cout << "How many clients do you want to view? ";
@@ -123,7 +131,10 @@ for (int i = 0; i < capacity && getline(file, line); i++) { //this declares a fo
 
 file.close();
 
-clientFile[1].print();
+for (int i = 0; i < capacity; i++) {
+    clientFile[i].print();
+
+}
 
 return 0;
 
