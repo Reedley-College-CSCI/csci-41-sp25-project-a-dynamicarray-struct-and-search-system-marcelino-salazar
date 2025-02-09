@@ -40,7 +40,7 @@ struct ClientRecord { //this struct is nested with previous 3 structs.
 
 int main() { 
 int capacity;
-cout << "How many clients do you want to view?";
+cout << "How many clients do you want to view? ";
 cin >> capacity; //capacity will determine the amount of data to access from the external file.
 
 ClientRecord* clientFile = new ClientRecord[capacity]; //this declares a pointer named "clientFile" and assigns a dynamic array of structs.
@@ -49,7 +49,7 @@ ifstream file("bank_full.csv"); //this declares a ifstream class named "file" to
 string line; //this declares a string class object named "line" to store values.
 getline(file, line); //here I use the string function to store rows from the external file into "line". It's placement here is meant to skip the header before executing the for loop.
 
-for (int i = 0; i < capacity; i++) { //this declares a for loop to read in capacity number rows from the external file.
+for (int i = 0; i < capacity && getline(file, line); i++) { //this declares a for loop to read in capacity number rows from the external file.
     stringstream parse(line); //this declares a stringstream class named "parse" which splits values from rows stored in "line" variable into individual strings.
     string temporaryLine; //here I declare a string class object named "temporaryLine" to convert strings into integers.
     
@@ -81,5 +81,9 @@ for (int i = 0; i < capacity; i++) { //this declares a for loop to read in capac
 }
 
 file.close();
+
+cout << clientFile[1].clientInfo.job << endl;
+
+return 0;
 
 }
