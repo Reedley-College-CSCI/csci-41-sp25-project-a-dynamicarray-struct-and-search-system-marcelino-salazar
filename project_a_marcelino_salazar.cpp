@@ -11,13 +11,27 @@ struct ClientData {
     string job;
     string marital;
     string education;
+
+    void print() const {
+        cout << "Age: " << age << endl;
+        cout << "Occupation: " << job << endl;
+        cout << "Marital Status: " << marital << endl;
+        cout << "Education: " << education << endl;
+    }
 };
 
 struct ClientBankData {
     string defaulted; //could not use default since it is a keyword.
     int balance;
     string housing;
-    string loan; 
+    string loan;
+    
+    void print() const {
+        cout << "Default record: " << defaulted << endl;
+        cout << "Average yearly balance: " << balance << endl;
+        cout << "Housing Loans: " << housing << endl;
+        cout << "Personal Loans: " << loan << endl;
+    }
 };
 
 struct CampaignData {    
@@ -30,12 +44,32 @@ struct CampaignData {
     int previous;
     string poutcome;
     string y;
+
+    void print() const {
+        cout << "Current Result: " << y << endl;
+        cout << "Contact Type: " << contact << endl;
+        cout << "Last day of the week contacted: " << day << endl;
+        cout << "Last month contacted: " << month << endl;
+        cout << "Call duration (sec): " << duration << endl;
+        cout << "Days since last day contacted: " << pdays << endl;
+        cout << "Number of contacts: " << previous << endl;
+        cout << "Previous Result: " << poutcome << endl;
+    }
 };
 
 struct ClientRecord { //this struct is nested with previous 3 structs.
     ClientData clientInfo;
     ClientBankData clientBankInfo;
-    CampaignData campaignInfo; 
+    CampaignData campaignInfo;
+    
+    void print() const {
+        cout << "Client Information: ";
+        clientInfo.print();
+        cout << "Client Bank Information: ";
+        clientBankInfo.print();
+        cout << "Campaign Information: ";
+        campaignInfo.print();
+    }
 };
 
 int main() { 
@@ -82,7 +116,7 @@ for (int i = 0; i < capacity && getline(file, line); i++) { //this declares a fo
 
 file.close();
 
-cout << clientFile[1].clientInfo.job << endl;
+clientFile[1].print();
 
 return 0;
 
