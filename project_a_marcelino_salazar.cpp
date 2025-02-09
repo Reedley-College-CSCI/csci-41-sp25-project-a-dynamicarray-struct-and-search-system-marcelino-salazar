@@ -17,6 +17,7 @@ struct ClientData {
         cout << "Occupation: " << job << endl;
         cout << "Marital Status: " << marital << endl;
         cout << "Education: " << education << endl;
+        cout << "-----------------------" << endl;
     }
 };
 
@@ -31,6 +32,7 @@ struct ClientBankData {
         cout << "Average yearly balance: " << balance << endl;
         cout << "Housing Loans: " << housing << endl;
         cout << "Personal Loans: " << loan << endl;
+        cout << "-----------------------" << endl;
     }
 };
 
@@ -54,6 +56,7 @@ struct CampaignData {
         cout << "Days since last day contacted: " << pdays << endl;
         cout << "Number of contacts: " << previous << endl;
         cout << "Previous Result: " << poutcome << endl;
+        cout << "-----------------------" << endl;
     }
 };
 
@@ -63,11 +66,14 @@ struct ClientRecord { //this struct is nested with previous 3 structs.
     CampaignData campaignInfo;
     
     void print() const {
-        cout << "Client Information: ";
+        cout << "Client Information: " << endl;
+        cout << "" << endl;
         clientInfo.print();
-        cout << "Client Bank Information: ";
+        cout << "Client Bank Information: " << endl;
+        cout << "" << endl;
         clientBankInfo.print();
-        cout << "Campaign Information: ";
+        cout << "Campaign Information: " << endl;
+        cout << "" << endl;
         campaignInfo.print();
     }
 };
@@ -76,6 +82,7 @@ int main() {
 int capacity;
 cout << "How many clients do you want to view? ";
 cin >> capacity; //capacity will determine the amount of data to access from the external file.
+cout << "-----------------------" << endl;
 
 ClientRecord* clientFile = new ClientRecord[capacity]; //this declares a pointer named "clientFile" and assigns a dynamic array of structs.
 
