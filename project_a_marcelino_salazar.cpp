@@ -18,10 +18,10 @@ struct ClientBankData {
     int balance;
     string housing;
     string loan; 
-    string contact;
 };
 
 struct CampaignData {    
+    string contact;
     int day;
     string month;
     int duration;
@@ -52,6 +52,24 @@ getline(file, line); //here I use the string function to store rows from the ext
 for (int i = 0; i < capacity; i++) { //this declares a for loop to read in capacity number rows from the external file.
     stringstream parse(line); //this declares a stringstream class named "parse" which splits values from rows stored in "line" variable into individual strings.
     string temporaryLine; //here I declare a string class object named "temporaryLine" to temporarily store values extracted.
+    
+    //here I use the getline() function to extract data from "parse" and store it into data members accordingly.
+    getline(parse, clientFile[i].clientInfo.age, ';');
+    getline(parse, clientFile[i].clientInfo.job, ';');
+    getline(parse, clientFile[i].clientInfo.marital, ';');
+    getline(parse, clientFile[i].clientInfo.education, ';');
+    getline(parse, clientFile[i].clientBankInfo.defaulted, ';');
+    getline(parse, clientFile[i].clientBankInfo.balance, ';');
+    getline(parse, clientFile[i].clientBankInfo.housing, ';');
+    getline(parse, clientFile[i].clientBankInfo.loan, ';');
+    getline(parse, clientFile[i].campaignInfo.contact, ';');
+    getline(parse, clientFile[i].campaignInfo.day, ';');
+    getline(parse, clientFile[i].campaignInfo.month, ';');
+    getline(parse, clientFile[i].campaignInfo.duration, ';');
+    getline(parse, clientFile[i].campaignInfo.campaign, ';');
+    getline(parse, clientFile[i].campaignInfo.pdays, ';');
+    getline(parse, clientFile[i].campaignInfo.previous, ';');
+    getline(parse, clientFile[i].campaignInfo.poutcome, ';');
 
 }
 
