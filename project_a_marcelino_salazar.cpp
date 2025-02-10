@@ -198,7 +198,7 @@ int main() {
     cout << "-----------------------" << endl;
 
     Clients viewClients(capacity); //this class pushes capacity to constructor
-    int option;
+   
     while(true) {
     cout << "MAIN MENU" << endl;
     cout << "1. View all clients" << endl;
