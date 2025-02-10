@@ -1,0 +1,1 @@
+I create multiple structs to where the last struct is nested with the previous 3. This is critical for menu options.

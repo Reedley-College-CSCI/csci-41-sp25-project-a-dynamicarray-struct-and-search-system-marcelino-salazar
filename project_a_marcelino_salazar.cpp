@@ -99,7 +99,7 @@ public:
     void loadfile() {
         ifstream file("bank_full.csv"); //this declares a ifstream class named "file" to open the external file bank_full.csv.
         string line; //this declares a string class object named "line" to store values.
-        getline(file, line); //here I use the string function to store rows from the external file into "line". It's placement here is meant to skip the header before executing the for loop.
+        getline(file, line); //here I use the getline() function to store rows from the external file into "line". It's placement here is meant to skip the header before executing the for loop.
         int idNumber = 10000; //6 digit id number declared.
 
         for (int i = 0; i < capacity && getline(file, line); i++) { //this declares a for loop to read in capacity number rows from the external file.
@@ -140,6 +140,7 @@ public:
         bool found;//here I intialize found variable to determine if a match was found or not.
         cout << "Enter ID Number: ";
         cin >> idSearch;
+        cout << "-----------------------" << endl;
 
         for (int i = 0; i < capacity; i++) {
             if (clientFile[i].clientInfo.id == idSearch) {
@@ -173,6 +174,7 @@ public:
         
         cout << "Enter job: ";
         cin >> newClientArray[capacity].clientInfo.job;
+        cout << "-----------------------" << endl;
     
         newClientArray[capacity].clientInfo.id = 10000 + capacity; //this assigns new id based off the capacity number.
         
@@ -196,6 +198,8 @@ int main() {
     cout << "-----------------------" << endl;
 
     Clients viewClients(capacity); //this class pushes capacity to constructor
+    int option;
+    while(true) {
     cout << "MAIN MENU" << endl;
     cout << "1. View all clients" << endl;
     cout << "2. Search ID" << endl;
@@ -217,12 +221,14 @@ int main() {
         viewClients.addClient();
 
     } else if (option == 5) {
-        cout << "Re-run to see Main Menu";
+        cout << "Closing...";
+        break;
     }
 
-    else {
+    } else {
         cout << "Invalid input. Enter valid input: 1,2,3,4,5";
     }
+
 
     return 0;
 
