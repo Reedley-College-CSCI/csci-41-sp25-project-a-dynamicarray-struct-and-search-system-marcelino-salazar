@@ -100,7 +100,7 @@ public:
         ifstream file("bank_full.csv"); //this declares a ifstream class named "file" to open the external file bank_full.csv.
         string line; //this declares a string class object named "line" to store values.
         getline(file, line); //here I use the string function to store rows from the external file into "line". It's placement here is meant to skip the header before executing the for loop.
-        int idNumber = 000000; //6 digit id number declared.
+        int idNumber = 10000; //6 digit id number declared.
 
         for (int i = 0; i < capacity && getline(file, line); i++) { //this declares a for loop to read in capacity number rows from the external file.
             stringstream parse(line); //this declares a stringstream class named "parse" which splits values from rows stored in "line" variable into individual strings.
@@ -135,9 +135,9 @@ public:
         file.close();
     }
 
-    void search() {
+    void search() { //function to search clients based of their id number.
         int idSearch;
-        bool found;
+        bool found;//here I intialize found variable and assign false to it.
         cout << "Enter ID Number: ";
         cin >> idSearch;
 
@@ -147,11 +147,12 @@ public:
                 found = true;
                 break;
             }
-
-        if (found != true) {
-            cout << "No matches found";
-            }
         }
+
+        if (found != true) { //this second if statement lets user know if no matches were found.
+            cout << "No matches found";
+        }
+        
     }
 
     void fullprint() const { //function to print clientFile
@@ -169,7 +170,7 @@ cout << "How many clients do you want to view? (Total: 45211) ";
 cin >> capacity; //capacity will determine the amount of data to access from the external file.
 cout << "-----------------------" << endl;
 
-Clients viewClients(capacity);
+Clients viewClients(capacity); //this class pushes capacity to constructor
 viewClients.fullprint();
 
 return 0;
