@@ -205,7 +205,7 @@ int main() {
     cout << "2. Search ID" << endl;
     cout << "3. Add new client file" << endl;
     cout << "4. Remove client file" << endl;
-    cout << "5. Cancel" << endl;
+    cout << "5. Quit" << endl;
     cout << "Enter option (1,2,3,4,5): ";
     int option;
     cin >> option;
@@ -223,11 +223,11 @@ int main() {
     } else if (option == 5) {
         cout << "Closing...";
         break;
-    }
-
+    
     } else {
         cout << "Invalid input. Enter valid input: 1,2,3,4,5";
     }
+}
 
 
     return 0;
