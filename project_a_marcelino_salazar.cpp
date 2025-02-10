@@ -64,7 +64,7 @@ public:
         }
     };
 
-    struct ClientRecord { //this struct is nested with previous 3 structs.
+    struct AllClientData { //this struct is nested with previous 3 structs.
         ClientData clientInfo;
         ClientBankData clientBankInfo;
         CampaignData campaignInfo;
@@ -83,12 +83,12 @@ public:
     };
 
 private:
-    ClientRecord* clientFile; //this declares a pointer named "clientFile".
+    AllClientData* clientFile; //this declares a pointer named "clientFile".
     int capacity;
 
 public:
     Clients(int cap) : capacity(cap) { //this constructor calls Clients object parameter in main body and assigns it to cap and capacity
-        clientFile = new ClientRecord[capacity]; //assigns a dynamic array of structs.
+        clientFile = new AllClientData[capacity]; //assigns a dynamic array of structs.
         loadfile();
     }
 
@@ -162,19 +162,25 @@ public:
     }
 
     void addClient() {  //here I create a function to add a new client file
-        ClientRecord newClient;
+        AllClientData* newClientArray = new AllClientData[capacity + 1]; //this creates a new dynamic array with 1 space appended to store new client file.
+
+        for (int i = 0; i < capacity; i++) {  //this for loop iterates through each existing client file and stores corresponding index to new array.
+            newClientArray[i] = clientFile[i];  
+        }
     
         cout << "Enter age: ";
-        cin >> newClient.clientInfo.age;
+        cin >> newClientArray[capacity].clientInfo.age;
         
         cout << "Enter job: ";
-        cin >> newClient.clientInfo.job;
+        cin >> newClientArray[capacity].clientInfo.job;
     
-        newClient.clientInfo.id = 10000 + capacity; //this assigns new id based off the capacity number.
+        newClientArray[capacity].clientInfo.id = 10000 + capacity; //this assigns new id based off the capacity number.
         
-        delete[] clientFile;
-        clientFile[capacity] = newClient;
-        capacity++;
+        delete[] clientFile; //this deletes the memory that was previously allocated for client file.
+        clientFile = newClientArray; //this re-assigns clientFile with the new array created.
+        capacity++; //this updates the array size for the next iteration
+
+        clientFile[capacity - 1].print();
     
     }
     
