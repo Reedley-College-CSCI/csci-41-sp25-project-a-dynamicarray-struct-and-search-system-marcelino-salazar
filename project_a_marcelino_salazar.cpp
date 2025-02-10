@@ -137,7 +137,7 @@ public:
 
     void search() { //function to search clients based of their id number.
         int idSearch;
-        bool found;//here I intialize found variable and assign false to it.
+        bool found;//here I intialize found variable to determine if a match was found or not.
         cout << "Enter ID Number: ";
         cin >> idSearch;
 
@@ -150,7 +150,7 @@ public:
         }
 
         if (found != true) { //this second if statement lets user know if no matches were found.
-            cout << "No matches found";
+            cout << "No matches found. Re-run program";
         }
         
     }
@@ -165,28 +165,31 @@ public:
 
 
 int main() { 
-int capacity;
-cout << "How many clients do you want to view? (Total: 45211) ";
-cin >> capacity; //capacity will determine the amount of data to access from the external file.
-cout << "-----------------------" << endl;
+    int capacity;
+    cout << "How many clients do you want to view? (Total: 45211) ";
+    cin >> capacity; //capacity will determine the amount of data to access from the external file.
+    cout << "-----------------------" << endl;
 
-cout << "MAIN MENU" << endl;
-cout << "1. View all clients" << endl;
-cout << "2. Search ID" << endl;
-cout << "3. Cancel" << endl;
-cout << "Enter option (1,2,3): ";
-int option;
-cin >> option;
-cout << "-----------------------" << endl;
+    Clients viewClients(capacity); //this class pushes capacity to constructor
+    cout << "MAIN MENU" << endl;
+    cout << "1. View all clients" << endl;
+    cout << "2. Search ID" << endl;
+    cout << "3. Cancel" << endl;
+    cout << "Enter option (1,2,3): ";
+    int option;
+    cin >> option;
+    cout << "-----------------------" << endl;
 
-if (option == 1) {
-Clients viewClients(capacity); //this class pushes capacity to constructor
-viewClients.fullprint();
+    if (option == 1) {
+        viewClients.fullprint();
 
-} else if (option == 2) {
-    viewClients.search()
-}
+    } else if (option == 2) {
+        viewClients.search();
 
-return 0;
+    } else if (option == 3) {
+        cout << "Re-run to see Main Menu";
+    }
+
+    return 0;
 
 }
