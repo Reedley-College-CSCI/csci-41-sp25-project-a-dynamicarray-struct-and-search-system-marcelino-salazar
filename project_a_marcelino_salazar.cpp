@@ -9,12 +9,14 @@ class Clients { //here I added a class to hold structs
 public:
 //here I create multiple structs to where the last struct is nested with the previous 3. This is critical for menu options.
     struct ClientData {
+        int id;
         int age;
         string job;
         string marital;
         string education;
 
         void print() const {
+            cout << "ID Number: " << id << endl;
             cout << "Age: " << age << endl;
             cout << "Occupation: " << job << endl;
             cout << "Marital Status: " << marital << endl;
