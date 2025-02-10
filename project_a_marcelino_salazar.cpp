@@ -98,40 +98,41 @@ public:
 
     void loadfile() {
         ifstream file("bank_full.csv"); //this declares a ifstream class named "file" to open the external file bank_full.csv.
+        string line; //this declares a string class object named "line" to store values.
+        getline(file, line); //here I use the string function to store rows from the external file into "line". It's placement here is meant to skip the header before executing the for loop.
+        int idNumber = 000000; //6 digit id number declared.
 
-    string line; //this declares a string class object named "line" to store values.
-    getline(file, line); //here I use the string function to store rows from the external file into "line". It's placement here is meant to skip the header before executing the for loop.
-
-    for (int i = 0; i < capacity && getline(file, line); i++) { //this declares a for loop to read in capacity number rows from the external file.
-        stringstream parse(line); //this declares a stringstream class named "parse" which splits values from rows stored in "line" variable into individual strings.
-        string temporaryLine; //here I declare a string class object named "temporaryLine" to convert strings into integers.
-        
-        //here I use the getline() function to extract data from "parse" and store it into data members accordingly. I used stoi() function to convert strings into integers where needed.
-        getline(parse, temporaryLine, ';'); 
-        clientFile[i].clientInfo.age = stoi(temporaryLine);
-        getline(parse, clientFile[i].clientInfo.job, ';');
-        getline(parse, clientFile[i].clientInfo.marital, ';');
-        getline(parse, clientFile[i].clientInfo.education, ';');
-        getline(parse, clientFile[i].clientBankInfo.defaulted, ';');
-        getline(parse, temporaryLine, ';');
-        clientFile[i].clientBankInfo.balance = stoi(temporaryLine);
-        getline(parse, clientFile[i].clientBankInfo.housing, ';');
-        getline(parse, clientFile[i].clientBankInfo.loan, ';');
-        getline(parse, clientFile[i].campaignInfo.contact, ';');
-        getline(parse, temporaryLine, ';'); 
-        clientFile[i].campaignInfo.day = stoi(temporaryLine);
-        getline(parse, clientFile[i].campaignInfo.month, ';');
-        getline(parse, temporaryLine, ';'); 
-        clientFile[i].campaignInfo.duration = stoi(temporaryLine);
-        getline(parse, temporaryLine, ';'); 
-        clientFile[i].campaignInfo.campaign = stoi(temporaryLine);
-        getline(parse, temporaryLine, ';'); 
-        clientFile[i].campaignInfo.pdays = stoi(temporaryLine);
-        getline(parse, temporaryLine, ';'); 
-        clientFile[i].campaignInfo.previous = stoi(temporaryLine);
-        getline(parse, clientFile[i].campaignInfo.poutcome, ';');
-    }
-    file.close();
+        for (int i = 0; i < capacity && getline(file, line); i++) { //this declares a for loop to read in capacity number rows from the external file.
+            stringstream parse(line); //this declares a stringstream class named "parse" which splits values from rows stored in "line" variable into individual strings.
+            string temporaryLine; //here I declare a string class object named "temporaryLine" to convert strings into integers.
+            
+            clientFile[i].clientInfo.id = idNumber++; //this assigns unique 6 digit id number to each client.
+            //here I use the getline() function to extract data from "parse" and store it into data members accordingly. I used stoi() function to convert strings into integers where needed.
+            getline(parse, temporaryLine, ';'); 
+            clientFile[i].clientInfo.age = stoi(temporaryLine);
+            getline(parse, clientFile[i].clientInfo.job, ';');
+            getline(parse, clientFile[i].clientInfo.marital, ';');
+            getline(parse, clientFile[i].clientInfo.education, ';');
+            getline(parse, clientFile[i].clientBankInfo.defaulted, ';');
+            getline(parse, temporaryLine, ';');
+            clientFile[i].clientBankInfo.balance = stoi(temporaryLine);
+            getline(parse, clientFile[i].clientBankInfo.housing, ';');
+            getline(parse, clientFile[i].clientBankInfo.loan, ';');
+            getline(parse, clientFile[i].campaignInfo.contact, ';');
+            getline(parse, temporaryLine, ';'); 
+            clientFile[i].campaignInfo.day = stoi(temporaryLine);
+            getline(parse, clientFile[i].campaignInfo.month, ';');
+            getline(parse, temporaryLine, ';'); 
+            clientFile[i].campaignInfo.duration = stoi(temporaryLine);
+            getline(parse, temporaryLine, ';'); 
+            clientFile[i].campaignInfo.campaign = stoi(temporaryLine);
+            getline(parse, temporaryLine, ';'); 
+            clientFile[i].campaignInfo.pdays = stoi(temporaryLine);
+            getline(parse, temporaryLine, ';'); 
+            clientFile[i].campaignInfo.previous = stoi(temporaryLine);
+            getline(parse, clientFile[i].campaignInfo.poutcome, ';');
+        }
+        file.close();
 }
 };
 
