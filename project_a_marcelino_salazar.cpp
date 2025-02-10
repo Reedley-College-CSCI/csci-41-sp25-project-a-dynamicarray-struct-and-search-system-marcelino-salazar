@@ -174,7 +174,9 @@ int main() {
     cout << "MAIN MENU" << endl;
     cout << "1. View all clients" << endl;
     cout << "2. Search ID" << endl;
-    cout << "3. Cancel" << endl;
+    cout << "3. Add new client file" << endl;
+    cout << "4. Remove client file" << endl;
+    cout << "5. Cancel" << endl;
     cout << "Enter option (1,2,3): ";
     int option;
     cin >> option;
@@ -186,8 +188,12 @@ int main() {
     } else if (option == 2) {
         viewClients.search();
 
-    } else if (option == 3) {
+    } else if (option == 5) {
         cout << "Re-run to see Main Menu";
+    }
+
+    else {
+        cout << "Invalid input. Enter valid input: 1,2,3";
     }
 
     return 0;
