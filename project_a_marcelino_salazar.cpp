@@ -133,16 +133,33 @@ public:
             getline(parse, clientFile[i].campaignInfo.poutcome, ';');
         }
         file.close();
-}
+    }
+
+    void search() {
+        int idSearch;
+        cout << "Enter ID Number: ";
+        cin >> idSearch;
+
+        for (int i = 0; i < capacity; i++) {
+            if (clientFile[i].clientInfo.id == idSearch) {
+                clientFile[i].print();
+                break;
+            }
+            else {
+            cout << "No matches found"
+            }
+        }
+    }
+
 };
 
 
 int main() { 
 int capacity;
-cout << "How many clients do you want to view? ";
+cout << "How many clients do you want to view? (Total: 45211) ";
 cin >> capacity; //capacity will determine the amount of data to access from the external file.
 cout << "-----------------------" << endl;
-}
+
 
 for (int i = 0; i < capacity; i++) {
     clientFile[i].print();
