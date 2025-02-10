@@ -87,7 +87,7 @@ private:
     int capacity;
 
 public:
-    Clients(int cap) : capacity(cap) {
+    Clients(int cap) : capacity(cap) { //this constructor calls Clients object parameter in main body and assigns it to cap and capacity
         clientFile = new ClientRecord[capacity]; //assigns a dynamic array of structs.
         loadfile();
     }
@@ -137,17 +137,26 @@ public:
 
     void search() {
         int idSearch;
+        bool found;
         cout << "Enter ID Number: ";
         cin >> idSearch;
 
         for (int i = 0; i < capacity; i++) {
             if (clientFile[i].clientInfo.id == idSearch) {
                 clientFile[i].print();
+                found = true;
                 break;
             }
-            else {
-            cout << "No matches found"
+
+        if (found != true) {
+            cout << "No matches found";
             }
+        }
+    }
+
+    void fullprint() const { //function to print clientFile
+        for (int i = 0; i < capacity; i++) {
+            clientFile[i].print(); 
         }
     }
 
@@ -160,11 +169,8 @@ cout << "How many clients do you want to view? (Total: 45211) ";
 cin >> capacity; //capacity will determine the amount of data to access from the external file.
 cout << "-----------------------" << endl;
 
-
-for (int i = 0; i < capacity; i++) {
-    clientFile[i].print();
-
-}
+Clients viewClients(capacity);
+viewClients.fullprint();
 
 return 0;
 
