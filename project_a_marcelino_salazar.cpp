@@ -138,7 +138,7 @@ public:
     void search() { //function to search clients based of their id number.
         int idSearch;
         bool found;//here I intialize found variable to determine if a match was found or not.
-        cout << "Enter ID Number: ";
+        cout << "Enter ID Number (starts at 10000): ";
         cin >> idSearch;
         cout << "-----------------------" << endl;
 
@@ -211,7 +211,11 @@ int main() {
     cin >> option;
     cout << "-----------------------" << endl;
 
-    if (option == 1) {
+    if (cin.fail()) {
+        cout << "Invalid input. Enter valid input: 1,2,3,4,5" << endl;
+        cout << "-----------------------" << endl;
+        
+    } else if (option == 1) {
         viewClients.fullprint();
 
     } else if (option == 2) {
@@ -225,7 +229,8 @@ int main() {
         break;
     
     } else {
-        cout << "Invalid input. Enter valid input: 1,2,3,4,5";
+        cout << "Invalid input. Enter valid input: 1,2,3,4,5" << endl;
+        cout << "-----------------------" << endl;
     }
 }
 
