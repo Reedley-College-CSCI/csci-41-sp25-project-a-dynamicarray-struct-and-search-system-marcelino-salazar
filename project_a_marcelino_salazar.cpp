@@ -98,6 +98,10 @@ public:
 
     void loadfile() {
         ifstream file("bank_full.csv"); //this declares a ifstream class named "file" to open the external file bank_full.csv.
+        if (!file) {
+            cout << "Error. Could not open file.";
+        }
+        
         string line; //this declares a string class object named "line" to store values.
         getline(file, line); //here I use the getline() function to store rows from the external file into "line". It's placement here is meant to skip the header before executing the for loop.
         int idNumber = 10000; //6 digit id number declared.
@@ -183,10 +187,29 @@ public:
         capacity++; //this updates the array size for the next iteration
 
         clientFile[capacity - 1].print();
-    
-    }
-    
 
+        ofstream outfile("bank_full.csv", ios::app);
+        if (outfile.is_open()) {
+            outfile << clientFile[capacity - 1].clientInfo.age << ";"
+                    << clientFile[capacity - 1].clientInfo.job << ";"
+                    << clientFile[capacity - 1].clientInfo.marital << ";"
+                    << clientFile[capacity - 1].clientInfo.education << ";"
+                    << clientFile[capacity - 1].clientBankInfo.defaulted << ";"
+                    << clientFile[capacity - 1].clientBankInfo.balance << ";"
+                    << clientFile[capacity - 1].clientBankInfo.housing << ";"
+                    << clientFile[capacity - 1].clientBankInfo.loan << ";"
+                    << clientFile[capacity - 1].campaignInfo.contact << ";"
+                    << clientFile[capacity - 1].campaignInfo.day << ";"
+                    << clientFile[capacity - 1].campaignInfo.month << ";"
+                    << clientFile[capacity - 1].campaignInfo.duration << ";"
+                    << clientFile[capacity - 1].campaignInfo.campaign << ";"
+                    << clientFile[capacity - 1].campaignInfo.pdays << ";"
+                    << clientFile[capacity - 1].campaignInfo.previous << ";"
+                    << clientFile[capacity - 1].campaignInfo.poutcome << "\n";
+            outfile.close();
+        clientFile[capacity - 1].print();
+    }
+}
 
 };
 
